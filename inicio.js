@@ -2,13 +2,18 @@ function crearPagina(){
     $('body').append('<div id="div1" ></div>')
     $('body').append('<br>')
     $('#div1').append('<h1>Bienvenidos al Gestor de contenido de Arturo</h1>')
-    $('#div1').append('<p>Bienvenidos al Gestor de contenido de Arturo</p>')
+    $('#div1').append('<p>Bienvenidos al gestor de contenido de Arturo</p>')
     $('#div1').append('<button id="boton" type="button" name="button">+Info</button>')
     $('#boton').on('click',function(){
         $('body').append('<div id="div2" style="background-color:white"></div>')
         $('#div2').append('<p>Bienvenidos al Gestor de contenido de Arturo</p>')
         $('#div2').append('<button id="b1" type="button" name="new">Pruebalo</button>')
+        $('#b1').on('click',function(){
+            window.open("./estilos/index.html");
+        })
+        $('#boton').off('click');
     })
+
 }
 
 function inicio(){
