@@ -55,11 +55,13 @@
     list-style-type: none;
     text-align: center;
 }
+
 #navegador li{
 display: inline;
 text-align: center;
 margin: 0 10px 0 0;
 }
+
 #navegador li a {
 padding: 2px 7px 2px 7px;
 color: #666;
@@ -71,4 +73,22 @@ text-decoration: none;
 #navegador li a:hover{
    background-color: #333333;
    color: #ffffff;
+}
+
+#panel{
+    position: absolute;
+    float: left;
+    height: 70%;
+    width: 20%;
+    float: left;
+    background-color: #026462;
+    border-style: solid;
+}
+
+#vista{
+    position: absolute;
+    float: left;
+    height: 70%;
+    width: 80%;
+    border-style: solid;
 }

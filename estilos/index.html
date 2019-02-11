@@ -7,24 +7,32 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="../jquery.js" charset="utf-8"></script>
+    <script type="text/javascript">
+        $(function(){
+            $('#h3').on('click',function(e){
+                e.preventDefault();
+                $('#vista').append(`<h3>asoihsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</h3>`)
+            });
+        });
+    </script>
 </head>
 <body>
     <div class="header">
-        <a href="#default" class="logo">CompanyLogo</a>
+        <a href="#default" class="logo">Proyecto JQuery de Arturo</a>
         <div class="header-right">
-            <a class="active" href="#home">Home</a>
-            <a href="#contact">Contact</a>
-            <a href="#about">About</a>
+            <a class="active" href="../index.html">Home</a>
+            <a href="../about.html">Sobre nosotros</a>
         </div>
     </div>
 
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">WebSiteName</a>
+                <a class="navbar-brand" href="#">Proyecto de JQuery de Arturo</a>
             </div>
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
+                <li class="active"><a href="../index.html">Inicio</a></li>
                 <li><a href="#">Page 1</a></li>
                 <li><a href="#">Page 2</a></li>
                 <li><a href="#">Page 3</a></li>
@@ -39,7 +47,7 @@
     <li><a href="#">Elemento 4</a></li>
     </ul>
     </div> -->
-    <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+    <!-- <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
         <button type="button" class="btn btn-secondary">1</button>
         <button type="button" class="btn btn-secondary">2</button>
 
@@ -52,6 +60,21 @@
                 <a class="dropdown-item" href="#">Dropdown link</a>
             </div>
         </div>
+    </div> -->
+    <div id="panel" class="">
+        <!-- <button id="minimizar" type="button" name="button">Minimizar</button> -->
+        <ul>
+
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
     </div>
+
+    <div id="vista" class="">
+        <button id="h3" type="button" name="button">Titulo</button>
+    </div>
+
 </body>
 </html>
