@@ -1,16 +1,22 @@
 function crearPagina(){
     $('body').append('<div id="div1" ></div>')
     $('body').append('<br>')
-    $('#div1').append('<h1>Bienvenidos al Gestor de contenido de Arturo</h1>')
-    $('#div1').append('<p>Bienvenidos al gestor de contenido de Arturo</p>')
-    $('#div1').append('<button id="boton" type="button" name="button">+Info</button>')
+    $('#div1').append('<h1>Proyecto de JQuery</h1>')
+    $('#div1').append('<p>Bienvenidos al gestor de contenido de Arturo.</p>');
+    $('#div1').append(`<p>Este proyecto es una práctica vista en clase sobre como incrustar codigo JavaScript con las librerias importadas de JQuery.
+        La finalidad es crear un gestor de contenido a tiempo real, proporcionando al usuario la posibilidad de diseñar una página HTML
+        viendo su maquetación en tiempo real.</p>`);
+    $('#div1').append('<p>Pulse sobre el botón inferior si desea conocer mas información sobre como comenzar a trabajar con nosotros.</p>');
+    $('#div1').append('<button id="boton" type="button" name="button">+Info</button>');
     $('#boton').on('click',function(){
         $('body').append('<div id="div2" style="background-color:white"></div>')
-        $('#div2').append('<p>Bienvenidos al Gestor de contenido de Arturo</p>')
+        $('#div2').append('<p>  Si desea continuar trabajando con nosotros pulse sobre el botón inferior.</p>')
         $('#div2').append('<button id="b1" type="button" name="new">Pruebalo</button>')
+        $('#div2').append('<button id="b2" type="button" name="change">Cambiar fuente</button>')
         $('#b1').on('click',function(){
             window.open("./estilos/index.html");
         })
+        $('#b2').on('click',estilos);
         $('#boton').off('click');
     })
 
@@ -18,11 +24,11 @@ function crearPagina(){
 
 function inicio(){
     $(document).off('mousemove');
-    window.confirm("¿Desea que aparezca una ayuda?")?crearPagina():alert("De acuerdo. Si desea cambiar de opcion seleccione aceptar");
+    window.confirm("¿Desea conocer mas sobre este proyecto?")?crearPagina():alert("De acuerdo. ¡Vuelva pronto!");
 }
 
-function mostrarAyuda(){
-
+function estilos(){
+    $('#div2 p').css('color','black');
 }
 
 $(document).ready(function(){
