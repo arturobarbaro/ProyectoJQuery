@@ -3,16 +3,26 @@
 <head>
     <meta charset="utf-8">
     <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../css/second.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <script src="../jquery.js" charset="utf-8"></script>
     <script type="text/javascript">
         $(function(){
-            $('#h3').on('click',function(e){
+            $('#new').click(function(){location.reload()});
+            $('#titulo a').on('click',function(e){
                 e.preventDefault();
-                $('#vista').append(`<h3>asoihsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</h3>`)
+                $('body').append(`<${this.id}>${window.prompt('Inserte su titulo')}</${this.id}>`)
+            });
+            $('#texto a').on('click',function(e){
+                e.preventDefault();
+                $('body').append(`<${this.id}>${window.prompt('Inserte un texto')}</${this.id}>`)
+            });
+            $('#multimedia a').on('click',function(e){
+                e.preventDefault();
+                $('body').append(`<${this.id} href="${window.prompt('Inserte la ruta')}"></${this.id}>`)
             });
         });
     </script>
@@ -25,56 +35,38 @@
             <a href="../about.html">Sobre nosotros</a>
         </div>
     </div>
-
-    <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">Proyecto de JQuery de Arturo</a>
-            </div>
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="../index.html">Inicio</a></li>
-                <li><a href="#">Page 1</a></li>
-                <li><a href="#">Page 2</a></li>
-                <li><a href="#">Page 3</a></li>
-            </ul>
-        </div>
-    </nav>
-    <!-- <div id="navegador">
-    <ul>
-    <li><a href="#">Elemento 1</a></li>
-    <li><a href="#">Elemento 2</a></li>
-    <li><a href="#">Elemento 3</a></li>
-    <li><a href="#">Elemento 4</a></li>
-    </ul>
-    </div> -->
-    <!-- <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-        <button type="button" class="btn btn-secondary">1</button>
-        <button type="button" class="btn btn-secondary">2</button>
-
-        <div class="btn-group" role="group">
-            <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle"
-            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown
-            </button>
-            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                <a class="dropdown-item" href="#">Dropdown link</a>
-                <a class="dropdown-item" href="#">Dropdown link</a>
-            </div>
-        </div>
-    </div> -->
-    <div id="panel" class="">
-        <!-- <button id="minimizar" type="button" name="button">Minimizar</button> -->
-        <ul>
-
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-        </ul>
+    <div class="navbar">
+      <a id="new">Nuevo</a>
+      <div id="titulo" class="dropdown">
+          <button class="dropbtn">Titulo
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a id="h1">Tamaño máximo</a>
+            <a id="h2">Tamaño grande</a>
+            <a id="h3">Tamaño medio</a>
+            <a id="h4">Tamaño pequeño</a>
+            <a id="h5">Tamaño minimo</a>
+          </div>
+      </div>
+      <div id="texto" class="dropdown">
+          <button class="dropbtn">Texto
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a id="p">Parrafo</a>
+            <a id="span">Lineas seguidas</a>
+          </div>
+      </div>
+      <div id="multimedia" class="dropdown">
+          <button class="dropbtn">Elementos multimedia
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a id="img">Imágenes</a>
+            <a id="span">Audio</a>
+          </div>
+      </div>
     </div>
-
-    <div id="vista" class="">
-        <button id="h3" type="button" name="button">Titulo</button>
-    </div>
-
 </body>
 </html>
