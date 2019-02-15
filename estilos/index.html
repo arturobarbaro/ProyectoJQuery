@@ -10,19 +10,29 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <script src="../jquery.js" charset="utf-8"></script>
     <script type="text/javascript">
+        function insertarElemento(elemento, padre){
+            $(padre).append(elemento);
+        }
+
         $(function(){
             $('#new').click(function(){location.reload()});
             $('#titulo a').on('click',function(e){
-                e.preventDefault();
-                $('body').append(`<${this.id}>${window.prompt('Inserte su titulo')}</${this.id}>`)
+                var titulo=window.prompt('Inserte su titulo');
+                if(titulo){
+                    insertarElemento(`<${this.id}>${titulo}</${this.id}>`,'#contenido');
+                }
             });
             $('#texto a').on('click',function(e){
                 e.preventDefault();
-                $('body').append(`<${this.id}>${window.prompt('Inserte un texto')}</${this.id}>`)
+                $('#contenido').append(`<${this.id}>${window.prompt('Inserte un texto')}</${this.id}>`)
             });
-            $('#multimedia a').on('click',function(e){
+            $('#img').on('click',function(e){
                 e.preventDefault();
-                $('body').append(`<${this.id} src="${window.prompt('Inserte la ruta')}"></${this.id}>`)
+                $('#contenido').append(`<${this.id} src="${window.prompt('Inserte la ruta')}"></${this.id}>`)
+            });
+            $('#a').on('click',function(e){
+                e.preventDefault();
+                $('#contenido').append(`<${this.id} href="${window.prompt('Inserte la ruta (http://nombredelsitio.com.ar/archivo.html)')}">${window.prompt('Nombre del enlace')}</a>`)
             });
         });
     </script>
@@ -63,10 +73,14 @@
             <i class="fa fa-caret-down"></i>
           </button>
           <div class="dropdown-content">
+            <a id="a">Enlaces web</a>
             <a id="img">Imágenes</a>
             <a id="span">Audio</a>
           </div>
       </div>
+    </div>
+    <div id="contenido" class="">
+
     </div>
 </body>
 </html>
