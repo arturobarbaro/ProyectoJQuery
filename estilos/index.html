@@ -11,19 +11,25 @@
     <script src="../jquery.js" charset="utf-8"></script>
     <script type="text/javascript">
         function insertarElemento(elemento, padre){
+            //elemento.draggable();
             $(padre).append(elemento);
+            if (document.getElementById('contenido').hasChildNodes()){
+                if (!document.getElementById('ver')){
+                    $('#nav').append('<button id="ver" type="button" name="ver">Vista Previa</button>');
+                }
+            }
         }
 
         $(function(){
             $('#new').click(function(){location.reload()});
             $('#titulo a').on('click',function(e){
                 var titulo=window.prompt('Inserte su titulo');
-                if(titulo){
-                    insertarElemento(`<${this.id}>${titulo}</${this.id}>`,'#contenido');
-                }
+                if(titulo){insertarElemento(`<${this.id}>${titulo}</${this.id}>`,'#contenido');}
             });
             $('#texto a').on('click',function(e){
                 e.preventDefault();
+                //var titulo=window.prompt('Inserte su titulo');
+                //if(titulo){insertarElemento(`<${this.id}>${titulo}</${this.id}>`,'#contenido');}
                 $('#contenido').append(`<${this.id}>${window.prompt('Inserte un texto')}</${this.id}>`)
             });
             $('#img').on('click',function(e){
@@ -45,7 +51,7 @@
             <a href="../about.html">Sobre nosotros</a>
         </div>
     </div>
-    <div class="navbar">
+    <div id='#nav' class="navbar">
       <a id="new">Nuevo</a>
       <div id="titulo" class="dropdown">
           <button class="dropbtn">Titulo
@@ -80,7 +86,6 @@
       </div>
     </div>
     <div id="contenido" class="">
-
     </div>
 </body>
 </html>

@@ -1,4 +1,11 @@
 function crearPagina(){
+    $('body').append(`<div class="header">
+        <a href="#default" class="logo">Proyecto JQuery de Arturo</a>
+        <div class="header-right">
+            <a class="active" href="../index.html">Home</a>
+            <a href="../about.html">Sobre nosotros</a>
+        </div>
+    </div>`)
     $('body').append('<div id="div1" ></div>')
     $('body').append('<br>')
     $('#div1').append('<h1>Proyecto de JQuery</h1>')
@@ -24,7 +31,8 @@ function crearPagina(){
 
 function inicio(){
     $(document).off('mousemove');
-    window.confirm("¿Desea conocer mas sobre este proyecto?")?crearPagina():alert("De acuerdo. ¡Vuelva pronto!");
+    crearPagina();
+    //window.confirm("¿Desea conocer mas sobre este proyecto?")?crearPagina():alert("De acuerdo. ¡Vuelva pronto!");
 }
 
 function estilos(){
