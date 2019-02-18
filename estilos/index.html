@@ -34,16 +34,13 @@
         $(function(){
             $('#ocultar').hide(1)
             .on('click',function(){
-                // $('div').hide(1);
-                // $('#contenido').show(1);
-                // $('body').on('dblclick',function(){
-                //     $('div').show(1);
-                // })
+                var myWindow = window.open();
+                myWindow.document.write(document.getElementById('contenido').innerHTML);
             });
             $('#new').click(function(){location.reload()});
             $('#titulo a').on('click',function(e){
                 var titulo=window.prompt('Inserte su titulo');
-                var e=`<${this.id}>${titulo}</${this.id}>`;
+                var e=`<${this.id} name="titulo">${titulo}</${this.id}>`;
                 if(titulo){insertarElemento(e,'#contenido');}
             });
             $('#texto a').on('click',function(e){
@@ -59,6 +56,21 @@
             $('#a').on('click',function(e){
                 e.preventDefault();
                 $('#contenido').append(`<${this.id} href="${window.prompt('Inserte la ruta (http://nombredelsitio.com.ar/archivo.html)')}">${window.prompt('Nombre del enlace')}</a>`)
+            });
+            $('#cf').on('click',function(e){
+                e.preventDefault();
+                var c=prompt('Introduzca el color en ingles');
+                $('body').css({'background-color': c});
+            });
+            $('#ct').on('click',function(e){
+                e.preventDefault();
+                var c=prompt('Introduzca el color en ingles');
+                $('[name="titulo"]').css({'color': c});
+            });
+            $('#cf').on('click',function(e){
+                e.preventDefault();
+                var c=prompt('Introduzca el color en ingles');
+                $('body').css({'background-color': c});
             });
         });
     </script>
@@ -102,6 +114,16 @@
             <a id="a">Enlaces web</a>
             <a id="img">Imágenes</a>
             <a id="span">Audio</a>
+          </div>
+      </div>
+      <div id="diseño" class="dropdown">
+          <button class="dropbtn">Diseño
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a id="cf">Color de fondo</a>
+            <a id="ctxt">Color de texto</a>
+            <a id="ct">Color de titulo</a>
           </div>
       </div>
       <a id="ocultar">Vista previa</a>
