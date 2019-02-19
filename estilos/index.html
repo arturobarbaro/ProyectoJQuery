@@ -47,17 +47,23 @@
             });
             $('#texto a').on('click',function(e){
                 e.preventDefault();
-                //var titulo=window.prompt('Inserte su titulo');
-                //if(titulo){insertarElemento(`<${this.id}>${titulo}</${this.id}>`,'#contenido');}
-                $('#contenido').append(`<${this.id}>${window.prompt('Inserte un texto')}</${this.id}>`)
+                var texto=window.prompt('Inserte texto');
+                var e=`<${this.id} name="texto">${texto}</${this.id}>`;
+                if(texto){insertarElemento(e,'#contenido');}
             });
             $('#img').on('click',function(e){
                 e.preventDefault();
-                $('#contenido').append(`<${this.id} src="${window.prompt('Inserte la ruta')}"></${this.id}>`)
+                var ruta=window.prompt('Inserte su ruta');
+                var e=`<${this.id} src="${ruta}"></${this.id}>`;
+                if(ruta){insertarElemento(e,'#contenido');}
             });
             $('#a').on('click',function(e){
                 e.preventDefault();
-                $('#contenido').append(`<${this.id} href="${window.prompt('Inserte la ruta (http://nombredelsitio.com.ar/archivo.html)')}">${window.prompt('Nombre del enlace')}</a>`)
+                var ruta=window.prompt('Inserte su ruta (http://nombredelsitio.com.ar/archivo.html)');
+                var nombre=window.prompt('Nombre del enlace');
+                var e=`<${this.id} href="${ruta}">${nombre}</a>`;
+                if(ruta && nombre){insertarElemento(e,'#contenido');}
+                $('#contenido').append()
             });
             $('#cf').on('click',function(e){
                 e.preventDefault();
@@ -79,7 +85,7 @@
 </head>
 <body>
     <div class="header">
-        <a href="#default" class="logo">Proyecto JQuery de Arturo</a>
+        <a href="index.html" class="logo">Proyecto JQuery de Arturo</a>
         <div class="header-right">
             <a class="active" href="../index.html">Home</a>
             <a href="../about.html">Sobre nosotros</a>
@@ -115,7 +121,7 @@
           <div class="dropdown-content">
             <a id="a">Enlaces web</a>
             <a id="img">Imágenes</a>
-            <a id="span">Audio</a>
+            <a id="audio">Audio</a>
           </div>
       </div>
       <div id="diseño" class="dropdown">

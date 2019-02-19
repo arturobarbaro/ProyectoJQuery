@@ -1,9 +1,9 @@
 function crearPagina(){
     $('body').append(`<div class="header">
-        <a href="#default" class="logo">Proyecto JQuery de Arturo</a>
+        <a class="logo">Proyecto JQuery de Arturo</a>
         <div class="header-right">
-            <a class="active" href="../index.html">Home</a>
-            <a href="../about.html">Sobre nosotros</a>
+            <a class="active" href="./index.html">Home</a>
+            <a href="./about.html">Sobre nosotros</a>
         </div>
     </div>`)
     $('body').append('<div id="div1" ></div>')
