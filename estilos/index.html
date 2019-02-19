@@ -24,18 +24,20 @@
             //         $('#nav').append('<button id="ver" type="button" name="ver">Vista Previa</button>');
             //     }
             // }
-            //$('img').draggable();
-            //$(elemento).parent().on('click',function(){console.log('as');})
-            // $('img').draggable();
-            // $('img').on('mouseup', asignarPosicion);
-            // $('img').on('drag', comprobarPosicion);
+            $('#contenido').children().draggable();
+            $(elemento).parent().on('click',function(){console.log('as');})
+            $('#contenido').children().draggable();
+            $('#contenido').children().on('mouseup', asignarPosicion);
+            $('#contenido').children().on('drag', comprobarPosicion);
         }
 
         $(function(){
             $('#ocultar').hide(1)
             .on('click',function(){
-                var myWindow = window.open();
-                myWindow.document.write(document.getElementById('contenido').innerHTML);
+                $('div:not("#contenido")').attr('hidden','true');
+                $('body').on('dblclick',function(){
+                    $('div').removeAttr('hidden');
+                })
             });
             $('#new').click(function(){location.reload()});
             $('#titulo a').on('click',function(e){
@@ -59,8 +61,8 @@
             });
             $('#cf').on('click',function(e){
                 e.preventDefault();
-                var c=prompt('Introduzca el color en ingles');
-                $('body').css({'background-color': c});
+                //var c=prompt('Introduzca el color en ingles');
+                $('body').css({'background-color': prompt('Introduzca el color en ingles')});
             });
             $('#ct').on('click',function(e){
                 e.preventDefault();
