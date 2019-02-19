@@ -8,80 +8,9 @@
     <link rel="stylesheet" href="../css/second.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
     <script src="../jquery.js" charset="utf-8"></script>
-    <script type="text/javascript">
-        function mostarVistaPrevia(){
-            if($('#contenido').children()){
-                $('#ocultar').show(1);
-            }
-        }
-
-        function insertarElemento(elemento, padre){
-            $(padre).append(elemento);
-            mostarVistaPrevia();
-            // if (document.getElementById('contenido').hasChildNodes()){
-            //     if (!document.getElementById('ver')){
-            //         $('#nav').append('<button id="ver" type="button" name="ver">Vista Previa</button>');
-            //     }
-            // }
-            $('#contenido').children().draggable();
-            $(elemento).parent().on('click',function(){console.log('as');})
-            $('#contenido').children().draggable();
-            $('#contenido').children().on('mouseup', asignarPosicion);
-            $('#contenido').children().on('drag', comprobarPosicion);
-        }
-
-        $(function(){
-            $('#ocultar').hide(1)
-            .on('click',function(){
-                $('div:not("#contenido")').attr('hidden','true');
-                $('body').on('dblclick',function(){
-                    $('div').removeAttr('hidden');
-                })
-            });
-            $('#new').click(function(){location.reload()});
-            $('#titulo a').on('click',function(e){
-                var titulo=window.prompt('Inserte su titulo');
-                var e=`<${this.id} name="titulo">${titulo}</${this.id}>`;
-                if(titulo){insertarElemento(e,'#contenido');}
-            });
-            $('#texto a').on('click',function(e){
-                e.preventDefault();
-                var texto=window.prompt('Inserte texto');
-                var e=`<${this.id} name="texto">${texto}</${this.id}>`;
-                if(texto){insertarElemento(e,'#contenido');}
-            });
-            $('#img').on('click',function(e){
-                e.preventDefault();
-                var ruta=window.prompt('Inserte su ruta');
-                var e=`<${this.id} src="${ruta}"></${this.id}>`;
-                if(ruta){insertarElemento(e,'#contenido');}
-            });
-            $('#a').on('click',function(e){
-                e.preventDefault();
-                var ruta=window.prompt('Inserte su ruta (http://nombredelsitio.com.ar/archivo.html)');
-                var nombre=window.prompt('Nombre del enlace');
-                var e=`<${this.id} href="${ruta}">${nombre}</a>`;
-                if(ruta && nombre){insertarElemento(e,'#contenido');}
-                $('#contenido').append()
-            });
-            $('#cf').on('click',function(e){
-                e.preventDefault();
-                //var c=prompt('Introduzca el color en ingles');
-                $('body').css({'background-color': prompt('Introduzca el color en ingles')});
-            });
-            $('#ct').on('click',function(e){
-                e.preventDefault();
-                var c=prompt('Introduzca el color en ingles');
-                $('[name="titulo"]').css({'color': c});
-            });
-            $('#cf').on('click',function(e){
-                e.preventDefault();
-                var c=prompt('Introduzca el color en ingles');
-                $('body').css({'background-color': c});
-            });
-        });
-    </script>
+    <script src="./script.js" charset="utf-8"></script>
 </head>
 <body>
     <div class="header">
