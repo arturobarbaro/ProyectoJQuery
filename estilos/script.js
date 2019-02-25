@@ -5,16 +5,17 @@ function mostarVistaPrevia(){
 }
 
 function insertarElemento(elemento, padre){
-    //elemento.draggable()
     $(padre).append(elemento);
     mostarVistaPrevia();
+    $('#contenido *').draggable();
     // if (document.getElementById('contenido').hasChildNodes()){
     //     if (!document.getElementById('ver')){
     //         $('#nav').append('<button id="ver" type="button" name="ver">Vista Previa</button>');
     //     }
     // }
-    $('p').draggable();
-    // $('#contenido').draggable();
+    //$('p').draggable();
+    $(elemento).draggable();
+    //$(elemento).on('drag', function(){console.log('aa')});
     // //$(elemento).parent().on('click',function(){console.log('as');})
     // //$('#contenido').draggable();
     // $('#contenido').on('mouseup', asignarPosicion);
@@ -22,9 +23,10 @@ function insertarElemento(elemento, padre){
 }
 
 $(function(){
+    $('#contenido *').draggable();
     $('#ocultar').hide(1)
     .on('click',function(){
-        $('div:not("#contenido")').attr('hidden','true');
+        $('.ocultable').attr('hidden','true');
         $('body').on('dblclick',function(){
             $('div').removeAttr('hidden');
         })
@@ -32,13 +34,13 @@ $(function(){
     $('#new').click(function(){location.reload()});
     $('#titulo a').on('click',function(e){
         var titulo=window.prompt('Inserte su titulo');
-        var e=`<${this.id} name="titulo">${titulo}</${this.id}>`;
+        var e=`<div><${this.id} name="titulo">${titulo}</${this.id}></div>`;
         if(titulo){insertarElemento(e,'#contenido');}
     });
     $('#texto a').on('click',function(e){
         e.preventDefault();
         var texto=window.prompt('Inserte texto');
-        var e=`<${this.id} name="texto">${texto}</${this.id}>`;
+        var e=`<div><${this.id} name="texto">${texto}</${this.id}></div>`;
         if(texto){insertarElemento(e,'#contenido');}
     });
     $('#img').on('click',function(e){
@@ -51,7 +53,7 @@ $(function(){
         e.preventDefault();
         var ruta=window.prompt('Inserte su ruta (http://nombredelsitio.com.ar/archivo.html)');
         var nombre=window.prompt('Nombre del enlace');
-        var e=`<${this.id} href="${ruta}">${nombre}</a>`;
+        var e=`<div><${this.id} href="${ruta}">${nombre}</a></div>`;
         if(ruta && nombre){insertarElemento(e,'#contenido');}
         $('#contenido').append()
     });
