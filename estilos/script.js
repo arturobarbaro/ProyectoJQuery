@@ -8,18 +8,7 @@ function insertarElemento(elemento, padre){
     $(padre).append(elemento);
     mostarVistaPrevia();
     $('#contenido *').draggable();
-    // if (document.getElementById('contenido').hasChildNodes()){
-    //     if (!document.getElementById('ver')){
-    //         $('#nav').append('<button id="ver" type="button" name="ver">Vista Previa</button>');
-    //     }
-    // }
-    //$('p').draggable();
     $(elemento).draggable();
-    //$(elemento).on('drag', function(){console.log('aa')});
-    // //$(elemento).parent().on('click',function(){console.log('as');})
-    // //$('#contenido').draggable();
-    // $('#contenido').on('mouseup', asignarPosicion);
-    // $('#contenido').on('drag', comprobarPosicion);
 }
 
 $(function(){
@@ -56,6 +45,34 @@ $(function(){
         var e=`<div><${this.id} href="${ruta}">${nombre}</a></div>`;
         if(ruta && nombre){insertarElemento(e,'#contenido');}
         $('#contenido').append()
+    });
+    $('#table').on('click',function(e){
+        var filas;
+        do {
+            filas = parseInt(prompt('Numero de filas de la tabla (comprendido entre 1 y 9)'));
+        } while (isNaN(filas) | filas <= 0 | filas > 10);
+
+        var columnas;
+        do {
+            columnas = parseInt(prompt('Numero de columnas de la tabla (comprendido entre 1 y 9)'));
+        } while (isNaN(columnas) | columnas <= 0 | columnas > 10);
+        var tabla = document.createElement('table');
+        var d = document.createElement('div');
+        var tr = document.createElement('tr');
+        $(tr).css({'text-align': 'left', 'padding': '8px'})
+        for (var i = 0; i < columnas; i++) {
+            var td=document.createElement('td');
+            td.addEventListener('click',function(){
+                $(this).text(prompt('Valor a introducir'))
+            })
+            tr.appendChild(td);
+            $(td).css({'text-align': 'left', 'padding': '8px'})
+        }
+        $(tabla).append(tr);
+        $(d).append(tabla);
+        $('#contenido').append(tabla);
+        $('td').text('aaa')
+        $(tabla).css({'border-collapse': 'collapse', 'width': '80%'});
     });
     $('#ct').on('click',function(e){
         e.preventDefault();
