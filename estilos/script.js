@@ -35,7 +35,7 @@ $(function(){
     $('#img').on('click',function(e){
         e.preventDefault();
         var ruta=window.prompt('Inserte su ruta');
-        var e=`<${this.id} src="${ruta}"></${this.id}>`;
+        var e=`<${this.id} src="${ruta}" width="250px"></${this.id}>`;
         if(ruta){insertarElemento(e,'#contenido');}
     });
     $('#a').on('click',function(e){
@@ -58,21 +58,24 @@ $(function(){
         } while (isNaN(columnas) | columnas <= 0 | columnas > 10);
         var tabla = document.createElement('table');
         var d = document.createElement('div');
-        var tr = document.createElement('tr');
-        $(tr).css({'text-align': 'left', 'padding': '8px'})
-        for (var i = 0; i < columnas; i++) {
-            var td=document.createElement('td');
-            td.addEventListener('click',function(){
-                $(this).text(prompt('Valor a introducir'))
-            })
-            tr.appendChild(td);
-            $(td).css({'text-align': 'left', 'padding': '8px'})
+        for (var i = 1; i <= filas; i++) {
+            var tr = document.createElement('tr');
+            for (var j = 1; j <= columnas; j++) {
+                var td=document.createElement('td');
+                td.addEventListener('click',function(){
+                    $(this).text(prompt('Valor a introducir'))
+                })
+                td.innerText=`Fila ${i}, columna ${j}`;
+                tr.appendChild(td);
+            }
+            $(tabla).append(tr);
         }
-        $(tabla).append(tr);
         $(d).append(tabla);
         $('#contenido').append(tabla);
-        $('td').text('aaa')
-        $(tabla).css({'border-collapse': 'collapse', 'width': '80%'});
+        $('table').css({'border-collapse': 'collapse', 'width': '80%'});
+        $('td').css({'text-align': 'left', 'padding': '8px'});
+        $('tr').css({'text-align': 'left', 'padding': '8px'});
+        $('tr:nth-child(even)').css({'background-color': '#f2f2f2'});
     });
     $('#ct').on('click',function(e){
         e.preventDefault();
