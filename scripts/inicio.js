@@ -2,7 +2,7 @@ function crearPagina(){
     $('body').append(`<div class="container">
       <!-- HEADER -->
       <div class="header">
-          <a href="./estilos/index.html" class="logo">Proyecto JQuery de Arturo</a>
+          <a href="./proyecto/index.html" class="logo">Proyecto JQuery de Arturo</a>
           <div class="header-right">
               <a class="active" href="./index.html">Home</a>
               <a href="./about.html">Sobre nosotros</a>
@@ -27,7 +27,7 @@ function crearPagina(){
            <p class="text-center">
              Crea, diseña y personaliza tu propia página web desde cero.
            </p>
-           <a href="./estilos/index.html">Crea tu proyecto</a>
+           <a href="./proyecto/index.html">Crea tu proyecto</a>
          </div>
          <div class="col-md-3 position-relative">
            <img src="img/about.png" class="img-fluid rounded"/>
