@@ -25,7 +25,7 @@ function insertarTextoA(e){
 function insertarImagen(e){
     e.preventDefault();
     var ruta=window.prompt('Inserte su ruta');
-    var e=`<${this.id} src="${ruta}" width="250px"></${this.id}>`;
+    var e=`<div><${this.id} src="${ruta}" width="250px"></${this.id}></div>`;
     if(ruta){insertarElemento(e,'#contenido');}
 }
 
