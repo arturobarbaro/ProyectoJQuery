@@ -9,44 +9,65 @@ function insertarElemento(elemento, padre){
     $(elemento).draggable();
 }
 
-function insertarTitulo(e){
-    //TODO DEBEMOS OCULTAR TODO Y PONER EL DIV ENMEDIO
-    var d= `
-    <div id="formulario" class="form-group">
-      <form>
+function crearFormularioTitulo(){
+    return`<form id="formulario">
         <label>Cadena:</label>
         <input class="form-control" type="text" id="cadena">
+        <br>
         <label>Tamaño</label>
         <select id="tam">
-            <option value="h1">1</option>
+            <option value="h1">1 (máximo)</option>
             <option value="h2">2</option>
             <option value="h3">3</option>
             <option value="h4">4</option>
             <option value="h5">5</option>
-            <option value="h6">6</option>
+            <option value="h6">6 (mínimo)</option>
         </select>
         <div class="mt-3 text-right">
           <input class="btn btn-success" id="Enviar" type="submit" value="Enviar" />
         </div>
-      </form>
-    </div>`;
-    $('body').append(d);
-    $('#formulario').css({'z-index':'999','width':'100%', 'height':'100%'});
-    $('#Enviar').on('click', function(){
-        var e=`<div><${$('#tam').val()} name="titulo">${$('#cadena').val()}</${$('#tam').val()}></div>`;
-        if(titulo){insertarElemento(e,'#contenido');}
-        $('#formulario').remove();
-    })
-    // var titulo=window.prompt('Inserte su titulo');
-    // var e=`<div><${this.id} name="titulo">${titulo}</${this.id}></div>`;
-    // if(titulo){insertarElemento(e,'#contenido');}
+      </form>`;
 }
 
-function insertarTextoA(e){
+function crearFormularioTexto(){
+    return`<form id="formulario">
+        <label>Cadena:</label>
+        <textarea id="textoT" rows="7" cols="50" name="description" value=""></textarea>
+        <br>
+        <div class="mt-3 text-right">
+          <input class="btn btn-success" id="Enviar" type="submit" value="Enviar" />
+        </div>
+      </form>`;
+}
+
+function insertarTitulo(e){
     e.preventDefault();
-    var texto=window.prompt('Inserte texto');
-    var e=`<div><${this.id} name="texto">${texto}</${this.id}></div>`;
-    if(texto){insertarElemento(e,'#contenido');}
+    var d= crearFormularioTitulo();
+    $('body').append(d);
+    $('.ocultable').attr('hidden','true');
+    $('#contenido').attr('hidden','true');
+    $('#formulario').css({'border':'1px solid #808080','position': 'absolute', 'background': 'lightblue', 'z-index':'999'});
+    $('#Enviar').on('click', function(){
+        var e=`<div><${$('#tam').val()} name="titulo">${$('#cadena').val()}</${$('#tam').val()}></div>`;
+        insertarElemento(e,'#contenido');
+        $('#formulario').remove();
+        $('div').removeAttr('hidden');
+    });
+}
+
+function insertarTexto(e){
+    e.preventDefault();
+    var d= crearFormularioTexto();
+    $('body').append(d);
+    $('.ocultable').attr('hidden','true');
+    $('#contenido').attr('hidden','true');
+    $('#formulario').css({'border':'1px solid #808080','position': 'absolute', 'background': 'lightblue', 'z-index':'999'});
+    $('#Enviar').on('click', function(){
+        var e=`<div><p name="texto">${$('#textoT').children()}</p></div>`;
+        insertarElemento(e,'#contenido');
+        $('#formulario').remove();
+        $('div').removeAttr('hidden');
+    })
 }
 
 function insertarImagen(e){
