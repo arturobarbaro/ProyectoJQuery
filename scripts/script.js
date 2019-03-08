@@ -8,8 +8,8 @@ $(function(){
         })
     });
     $('#new').click(function(){location.reload()});
-    $('#titulo a').on('click',insertarTitulo);
-    $('#texto a').on('click', insertarTextoA);
+    $('#h').on('click',insertarTitulo);
+    $('#p').on('click', insertarTexto);
     $('#img').on('click',insertarImagen);
     $('#a').on('click',insertarRuta);
     $('#table').on('click',insertarTabla);
