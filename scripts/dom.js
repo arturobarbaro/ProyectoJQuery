@@ -1,12 +1,24 @@
+/**
+ * Funcion encarga de mostrat o ocultar el boton de vista previa comprobando
+ * si el elemento con id contenido tiene hijos
+ */
 function mostarVistaPrevia(){
     ($('#contenido').children().length > 0)?$('#ocultar').show(1):$('#ocultar').hide(1);
 }
 
+/**
+ * Elimina el formulario de inserción de texto para el usuario
+ */
 function ocultarFormulario(){
     $('#formulario').remove();
     $('div').removeAttr('hidden');
 }
 
+/**
+ * Inserta un elemento dom y le asigna eventos para poder arrastrarlo o eliminarlo
+ * @param  element elemento elemento hijo
+ * @param  element padre    elemento padre
+ */
 function insertarElemento(elemento, padre){
     $(padre).append(elemento);
     $('#contenido div').draggable();
@@ -15,6 +27,10 @@ function insertarElemento(elemento, padre){
     mostarVistaPrevia();
 }
 
+/**
+ * Devuelve un formulario para que el usuario inserte datos
+ * @return String el formulario
+ */
 function crearFormularioTitulo(){
     return`<form id="formulario">
         <label>Cadena:</label><br>
@@ -62,6 +78,9 @@ function crearFormularioTitulo(){
       </form>`;
 }
 
+/**
+ * Recoge los datos del formulario e inserta el elemento DOM asignado
+ */
 function insertarTitulo(e){
     e.preventDefault();
     var d= crearFormularioTitulo();
@@ -77,6 +96,10 @@ function insertarTitulo(e){
     $('#Cancelar').on('click', ocultarFormulario)
 }
 
+/**
+ * Devuelve un formulario para que el usuario inserte datos
+ * @return String el formulario
+ */
 function crearFormularioTexto(){
     return`<form id="formulario">
         <label>Cadena:</label><br>
@@ -125,6 +148,9 @@ function crearFormularioTexto(){
       </form>`;
 }
 
+/**
+ * Recoge los datos del formulario e inserta el elemento DOM asignado
+ */
 function insertarTexto(e){
     e.preventDefault();
     var d= crearFormularioTexto();
@@ -140,6 +166,10 @@ function insertarTexto(e){
     $('#Cancelar').on('click', ocultarFormulario)
 }
 
+/**
+ * Devuelve un formulario para que el usuario inserte datos
+ * @return String el formulario
+ */
 function crearFormularioEnlace(){
     return`<form id="formulario">
         <label>Enlace web</label>
@@ -185,7 +215,9 @@ function crearFormularioEnlace(){
       </form>`;
 }
 
-
+/**
+ * Recoge los datos del formulario e inserta el elemento DOM asignado
+ */
 function insertarRuta(e){
     e.preventDefault();
     var d= crearFormularioEnlace();
@@ -202,6 +234,10 @@ function insertarRuta(e){
     $('#Cancelar').on('click', ocultarFormulario)
 }
 
+/**
+ * Devuelve un formulario para que el usuario inserte datos
+ * @return String el formulario
+ */
 function crearFormularioBotonEnlace(){
     return`<form id="formulario">
         <label>Enlace web</label>
@@ -246,7 +282,9 @@ function crearFormularioBotonEnlace(){
       </form>`;
 }
 
-
+/**
+ * Recoge los datos del formulario e inserta el elemento DOM asignado
+ */
 function insertarBotonEnlace(e){
     e.preventDefault();
     var d= crearFormularioBotonEnlace();
@@ -263,6 +301,10 @@ function insertarBotonEnlace(e){
     $('#Cancelar').on('click', ocultarFormulario)
 }
 
+/**
+ * Devuelve un formulario para que el usuario inserte datos
+ * @return String el formulario
+ */
 function crearFormularioBoton(){
     return`<form id="formulario">
         <label>Texto del boton</label>
@@ -310,7 +352,9 @@ function crearFormularioBoton(){
       </form>`;
 }
 
-
+/**
+ * Recoge los datos del formulario e inserta el elemento DOM asignado
+ */
 function insertarBoton(e){
     e.preventDefault();
     var d= crearFormularioBoton();
@@ -326,6 +370,10 @@ function insertarBoton(e){
     $('#Cancelar').on('click', ocultarFormulario)
 }
 
+/**
+ * Devuelve un formulario para que el usuario inserte datos
+ * @return String el formulario
+ */
 function crearFormulario(){
     return`<form id="formulario">
         <label>Color de fondo: </label>
@@ -392,7 +440,9 @@ function crearFormulario(){
       </form>`;
 }
 
-
+/**
+ * Recoge los datos del formulario e inserta el elemento DOM asignado
+ */
 function insertarFormulario(e){
     e.preventDefault();
     var d= crearFormulario();
@@ -410,6 +460,10 @@ function insertarFormulario(e){
     $('#Cancelar').on('click', ocultarFormulario)
 }
 
+/**
+ * Devuelve un formulario para que el usuario inserte datos
+ * @return String el formulario
+ */
 function crearFormularioInput(){
     return`<form id="formulario">
         <label>Color de fondo: </label>
@@ -453,6 +507,9 @@ function crearFormularioInput(){
       </form>`;
 }
 
+/**
+ * Recoge los datos del formulario e inserta el elemento DOM asignado
+ */
 function insertarInput(e){
     e.preventDefault();
     var d= crearFormularioInput();
@@ -468,6 +525,10 @@ function insertarInput(e){
     $('#Cancelar').on('click', ocultarFormulario)
 }
 
+/**
+ * Devuelve un formulario para que el usuario inserte datos
+ * @return String el formulario
+ */
 function crearFormularioImg(){
     return`<form id="formulario">
         <label>Elija una imagen</label>
@@ -497,6 +558,9 @@ function crearFormularioImg(){
       </form>`;
 }
 
+/**
+ * Recoge los datos del formulario e inserta el elemento DOM asignado
+ */
 function insertarImagen(e){
     e.preventDefault();
     var d= crearFormularioImg();
@@ -516,6 +580,10 @@ function insertarImagen(e){
     $('#Cancelar').on('click', ocultarFormulario)
 }
 
+/**
+ * Devuelve un formulario para que el usuario inserte datos
+ * @return String el formulario
+ */
 function crearFormularioImgE(){
     return`<form id="formulario">
         <label>Elija una imagen</label>
@@ -545,6 +613,9 @@ function crearFormularioImgE(){
       </form>`;
 }
 
+/**
+ * Recoge los datos del formulario e inserta el elemento DOM asignado
+ */
 function insertarImagenE(e){
     e.preventDefault();
     var d= crearFormularioImgE();
@@ -560,6 +631,10 @@ function insertarImagenE(e){
     $('#Cancelar').on('click', ocultarFormulario)
 }
 
+/**
+ * Devuelve un formulario para que el usuario inserte datos
+ * @return String el formulario
+ */
 function crearFormularioAudio(){
     return`<form id="formulario">
         <label>Enlace del audio</label><br>
@@ -569,6 +644,9 @@ function crearFormularioAudio(){
       </form>`;
 }
 
+/**
+ * Recoge los datos del formulario e inserta el elemento DOM asignado
+ */
 function insertarAudio(e){
     e.preventDefault();
     var d= crearFormularioAudio();
@@ -583,6 +661,10 @@ function insertarAudio(e){
     $('#Cancelar').on('click', ocultarFormulario)
 }
 
+/**
+ * Devuelve un formulario para que el usuario inserte datos
+ * @return String el formulario
+ */
 function crearFormularioVideo(){
     return`<form id="formulario">
         <label>Enlace del video</label><br>
@@ -596,6 +678,9 @@ function crearFormularioVideo(){
       </form>`;
 }
 
+/**
+ * Recoge los datos del formulario e inserta el elemento DOM asignado
+ */
 function insertarVideo(e){
     e.preventDefault();
     var d= crearFormularioVideo();
@@ -610,6 +695,10 @@ function insertarVideo(e){
     $('#Cancelar').on('click', ocultarFormulario)
 }
 
+/**
+ * Devuelve un formulario para que el usuario inserte datos
+ * @return String el formulario
+ */
 function crearFormularioTabla(){
     return`<form id="formulario">
         <label>Color de fuente </label>
@@ -668,6 +757,9 @@ function crearFormularioTabla(){
       </form>`;
 }
 
+/**
+ * Crea una tabla. Recoge los datos del formulario e inserta el elemento DOM asignado
+ */
 function crearTabla(filas, columnas){
     var tabla = document.createElement('table');
     var d = document.createElement('div');
@@ -687,6 +779,9 @@ function crearTabla(filas, columnas){
     insertarElemento(tabla,$('#contenido'))
 }
 
+/**
+ * Recoge los datos del formulario e inserta el elemento DOM asignado
+ */
 function insertarTabla(e){
     e.preventDefault();
     var d= crearFormularioTabla();
@@ -703,12 +798,19 @@ function insertarTabla(e){
     $('#Cancelar').on('click', ocultarFormulario)
 }
 
+/**
+ * Devuelve un formulario para que el usuario inserte datos
+ * @return String el formulario
+ */
 function formularioColor(){
     return `<form id="formulario"><label>Color: </label><input id="color" type="color" name="favcolor" value="#ffffff"><br><br>
     <input class="btn btn-success" id="Enviar" type="submit" value="Guardar" /><br>
     <input class="btn btn-success" id="Cancelar" type="button" value="Cancelar" /><br></form>`;
 }
 
+/**
+ * Modifica el color de fondo recogiendo su valor de un formulario
+ */
 function estilosColorFondo(){
     var d = formularioColor();
     $('body').append(d);
@@ -721,6 +823,9 @@ function estilosColorFondo(){
     $('#Cancelar').on('click', ocultarFormulario)
 }
 
+/**
+ * Recoge los datos del formulario y modifica el color del selector DOM indicado
+ */
 function estilosColorTexto(){
     var d = formularioColor();
     $('body').append(d);
@@ -733,6 +838,9 @@ function estilosColorTexto(){
     $('#Cancelar').on('click', ocultarFormulario)
 }
 
+/**
+ * Recoge los datos del formulario y modifica el color del selector DOM indicado
+ */
 function estilosColorTitulo(){
     var d = formularioColor();
     $('body').append(d);

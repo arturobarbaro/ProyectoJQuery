@@ -1,9 +1,10 @@
+//Asignamos cada evento cuando el documento se ha cargado
 $(function(){
     $('#contenido *').draggable();
     $('#ocultar').hide(1)
     .on('click',function(){
         $('.ocultable').attr('hidden','true');
-        $('body').on('dblclick',function(){
+        $('*').on('dblclick',function(){
             $('div').removeAttr('hidden');
         })
     });
