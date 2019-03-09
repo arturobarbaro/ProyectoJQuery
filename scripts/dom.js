@@ -11,8 +11,8 @@ function insertarElemento(elemento, padre){
 
 function crearFormularioTitulo(){
     return`<form id="formulario">
-        <label>Cadena:</label>
-        <input class="form-control" type="text" id="cadena"><br>
+        <label>Cadena:</label><br>
+        <textarea id="cadena" rows="7" cols="50" name="description" value=""></textarea><br><br>
         <label>Tamaño</label>
         <select id="tam">
             <option value="h1">1 (máximo)</option>
@@ -21,9 +21,7 @@ function crearFormularioTitulo(){
             <option value="h4">4</option>
             <option value="h5">5</option>
             <option value="h6">6 (mínimo)</option>
-        </select><br>
-        <label>Font-size (em)</label>
-        <input class="form-control" type="number" id="size"><br>
+        </select><br><br>
         <label>Tipo de fuente</label>
         <select id="tipo">
             <option value="b">Bold</option>
@@ -36,16 +34,58 @@ function crearFormularioTitulo(){
             <option value="ins">Inserted</option>
             <option value="sub">Subscript</option>
             <option value="sup">Superscript</option>
-        </select><br>
+        </select><br><br>
+        <label>Alineación del texto</label>
+        <select id="alig">
+            <option value="left">Izquierda</option>
+            <option value="center">Centro</option>
+            <option value="right">Derecha</option>
+            <option value="justify">Justificado</option>
+        </select><br><br>
+        <label>Decoración del texto</label>
+        <select id="decoracion">
+            <option value="none">Normal</option>
+            <option value="overline">Overline</option>
+            <option value="line-through">Line-through</option>
+            <option value="underline">Underline</option>
+        </select><br><br>
+        <label>Color del texto</label>
+        <input id="color" type="color" name="favcolor" value="#000000"><br><br>
         <input class="btn btn-success" id="Enviar" type="submit" value="Enviar" /><br>
-        <input class="btn btn-success" id="Cancelar" type="button" value="Cancelar" /><br>
+        <input class="btn btn-danger" id="Cancelar" type="button" value="Cancelar" /><br><br>
       </form>`;
+}
+
+function insertarTitulo(e){
+    e.preventDefault();
+    var d= crearFormularioTitulo();
+    $('body').append(d);
+    $('div').attr('hidden','true');
+    $('#formulario').css({'border':'1px solid #808080','position': 'absolute', 'background': 'lightblue', 'z-index':'999'});
+    $('#Enviar').on('click', function(){
+        var e=`<div><${$('#tam').val()} name="titulo"><${$('#tipo').val()}>${$('#cadena').val()}</${$('#tam').val()}><${$('#tipo').val()}></div>`;
+        insertarElemento(e,'#contenido');
+        $('#contenido').children().last().css({'color':`${$('#color').val()}`, 'text-align':`${$('#alig').val()}`, 'text-decoration':`${$('#decoracion').val()}`});
+        $('#formulario').remove();
+        $('div').removeAttr('hidden');
+    });
+    $('#Cancelar').on('click', function(){$('#formulario').remove();$('div').removeAttr('hidden');})
 }
 
 function crearFormularioTexto(){
     return`<form id="formulario">
-        <label>Cadena:</label>
-        <textarea id="textoT" rows="7" cols="50" name="description" value=""></textarea><br>
+        <label>Cadena:</label><br>
+        <textarea id="cadena" rows="7" cols="50" name="description" value=""></textarea><br><br>
+        <label>Tamaño de la fuente (em)</label>
+        <select id="size">
+            <option value="xx-small">xx-small</option>
+            <option value="x-small">x-small</option>
+            <option value="small">small</option>
+            <option value="medium">medium</option>
+            <option value="large">large</option>
+            <option value="x-large">x-large</option>
+            <option value="xx-large">xx-large</option>
+        </select><br><br>
         <label>Tipo de fuente</label>
         <select id="tipo">
             <option value="b">Bold</option>
@@ -58,10 +98,42 @@ function crearFormularioTexto(){
             <option value="ins">Inserted</option>
             <option value="sub">Subscript</option>
             <option value="sup">Superscript</option>
-        </select><br>
+        </select><br><br>
+        <label>Alineación del texto</label>
+        <select id="alig">
+            <option value="left">Izquierda</option>
+            <option value="center">Centro</option>
+            <option value="right">Derecha</option>
+            <option value="justify">Justificado</option>
+        </select><br><br>
+        <label>Decoración del texto</label>
+        <select id="decoracion">
+            <option value="none">Normal</option>
+            <option value="overline">Overline</option>
+            <option value="line-through">Line-through</option>
+            <option value="underline">Underline</option>
+        </select><br><br>
+        <label>Color del texto</label>
+        <input id="color" type="color" name="favcolor" value="#000000"><br><br>
         <input class="btn btn-success" id="Enviar" type="submit" value="Enviar" /><br>
-        <input class="btn btn-success" id="Cancelar" type="button" value="Cancelar" /><br>
+        <input class="btn btn-danger" id="Cancelar" type="button" value="Cancelar" /><br><br>
       </form>`;
+}
+
+function insertarTexto(e){
+    e.preventDefault();
+    var d= crearFormularioTexto();
+    $('body').append(d);
+    $('div').attr('hidden','true');
+    $('#formulario').css({'border':'1px solid #808080','position': 'absolute', 'background': 'lightblue', 'z-index':'999'});
+    $('#Enviar').on('click', function(){
+        var e=`<div><p name="texto"><${$('#tipo').val()}>${$('#cadena').val()}</${$('#tipo').val()}></p></div>`;
+        insertarElemento(e,'#contenido');
+        $('#contenido').children().last().css({'color':`${$('#color').val()}`, 'text-align':`${$('#alig').val()}`, 'text-decoration':`${$('#decoracion').val()}`, 'font-size':`${$('#size').val()}`});
+        $('#formulario').remove();
+        $('div').removeAttr('hidden');
+    })
+    $('#Cancelar').on('click', function(){$('#formulario').remove();$('div').removeAttr('hidden');})
 }
 
 function crearFormularioEnlace(){
@@ -103,41 +175,11 @@ function crearFormularioImg(){
       </form>`;
 }
 
-function insertarTitulo(e){
-    e.preventDefault();
-    var d= crearFormularioTitulo();
-    $('body').append(d);
-    $('div').attr('hidden','true');
-    $('#formulario').css({'border':'1px solid #808080','position': 'absolute', 'background': 'lightblue', 'z-index':'999'});
-    $('#Enviar').on('click', function(){
-        var e=`<div><${$('#tam').val()} name="titulo"><${$('#tipo').val()}>${$('#cadena').val()}</${$('#tam').val()}><${$('#tipo').val()}></div>`;
-        insertarElemento(e,'#contenido');
-        $('#formulario').remove();
-        $('div').removeAttr('hidden');
-    });
-    $('#Cancelar').on('click', function(){$('#formulario').remove();$('div').removeAttr('hidden');})
-}
-
-function insertarTexto(e){
-    e.preventDefault();
-    var d= crearFormularioTexto();
-    $('body').append(d);
-    $('div').attr('hidden','true');
-    $('#formulario').css({'border':'1px solid #808080','position': 'absolute', 'background': 'lightblue', 'z-index':'999'});
-    $('#Enviar').on('click', function(){
-        var e=`<div><p name="texto"><${$('#tipo').val()}>${$('#textoT').val()}</${$('#tipo').val()}></p></div>`;
-        insertarElemento(e,'#contenido');
-        $('#formulario').remove();
-        $('div').removeAttr('hidden');
-    })
-    $('#Cancelar').on('click', function(){$('#formulario').remove();$('div').removeAttr('hidden');})
-}
-
 function insertarImagen(e){
     e.preventDefault();
     var d= crearFormularioImg();
     $('body').append(d);
-    $('div').attr('hidden','true');    
+    $('div').attr('hidden','true');
     $('#formulario').css({'border':'1px solid #808080','position': 'absolute', 'background': 'lightblue', 'z-index':'999'});
     $('#Enviar').on('click', function(){
         var e=`<div><img src="${$('#enlace').val()}" width="${$('#ancho').val()}px" height="${$('#alto').val()}px" alt="${$('#cadena').val()}"></img></div>`;
@@ -185,7 +227,7 @@ function insertarRuta(e){
     e.preventDefault();
     var d= crearFormularioEnlace();
     $('body').append(d);
-    $('div').attr('hidden','true');    
+    $('div').attr('hidden','true');
     $('#formulario').css({'border':'1px solid #808080','position': 'absolute', 'background': 'lightblue', 'z-index':'999'});
     $('#Enviar').on('click', function(){
         var e=`<div><a href="${$('#enlace').val()}" target="_blank"><${$('#tipo').val()}>${$('#cadena').val()}</${$('#tipo').val()}></a></div>`;
