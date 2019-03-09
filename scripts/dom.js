@@ -2,6 +2,11 @@ function mostarVistaPrevia(){
     ($('#contenido').children().length > 0)?$('#ocultar').show(1):$('#ocultar').hide(1);
 }
 
+function ocultarFormulario(){
+    $('#formulario').remove();
+    $('div').removeAttr('hidden');
+}
+
 function insertarElemento(elemento, padre){
     $(padre).append(elemento);
     $('#contenido div').draggable();
@@ -67,10 +72,9 @@ function insertarTitulo(e){
         var e=`<div><${$('#tam').val()} name="titulo"><${$('#tipo').val()}>${$('#cadena').val()}</${$('#tam').val()}><${$('#tipo').val()}></div>`;
         insertarElemento(e,'#contenido');
         $('#contenido').children().last().css({'color':`${$('#color').val()}`, 'text-align':`${$('#alig').val()}`, 'text-decoration':`${$('#decoracion').val()}`});
-        $('#formulario').remove();
-        $('div').removeAttr('hidden');
+        ocultarFormulario();
     });
-    $('#Cancelar').on('click', function(){$('#formulario').remove();$('div').removeAttr('hidden');})
+    $('#Cancelar').on('click', ocultarFormulario)
 }
 
 function crearFormularioTexto(){
@@ -131,10 +135,9 @@ function insertarTexto(e){
         var e=`<div><p name="texto"><${$('#tipo').val()}>${$('#cadena').val()}</${$('#tipo').val()}></p></div>`;
         insertarElemento(e,'#contenido');
         $('#contenido').children().last().css({'color':`${$('#color').val()}`, 'text-align':`${$('#alig').val()}`, 'text-decoration':`${$('#decoracion').val()}`, 'font-size':`${$('#size').val()}`});
-        $('#formulario').remove();
-        $('div').removeAttr('hidden');
+        ocultarFormulario();
     })
-    $('#Cancelar').on('click', function(){$('#formulario').remove();$('div').removeAttr('hidden');})
+    $('#Cancelar').on('click', ocultarFormulario)
 }
 
 function crearFormularioEnlace(){
@@ -194,10 +197,9 @@ function insertarRuta(e){
         insertarElemento(e,'#contenido');
         self = $('#contenido').children().last();
         $(self).children().children().css({'color':`${$('#lcolor').val()}`, 'background-color':`${$('#bcolor').val()}`, 'text-decoration':`${$('#ldecoracion').val()}`, 'font-size':`${$('#size').val()}`});
-        $('#formulario').remove();
-        $('div').removeAttr('hidden');
+        ocultarFormulario();
     })
-    $('#Cancelar').on('click', function(){$('#formulario').remove();$('div').removeAttr('hidden');})
+    $('#Cancelar').on('click', ocultarFormulario)
 }
 
 function crearFormularioBotonEnlace(){
@@ -256,10 +258,9 @@ function insertarBotonEnlace(e){
         insertarElemento(e,'#contenido');
         self = $('#contenido').children().last();
         $(self).children().css({'color':`${$('#lcolor').val()}`, 'background-color':`${$('#bcolor').val()}`, 'padding':`${$('#alto').val()}px ${$('#ancho').val()}px `, 'font-size':`${$('#size').val()}`});
-        $('#formulario').remove();
-        $('div').removeAttr('hidden');
+        ocultarFormulario();
     })
-    $('#Cancelar').on('click', function(){$('#formulario').remove();$('div').removeAttr('hidden');})
+    $('#Cancelar').on('click', ocultarFormulario)
 }
 
 function crearFormularioBoton(){
@@ -320,10 +321,9 @@ function insertarBoton(e){
         var e=`<div><button>${$('#cadena').val()}</button></div>`;
         insertarElemento(e,'#contenido');
         $('#contenido').children().last().children().css({'padding':`${$('#alto').val()}px ${$('#ancho').val()}px `, 'color':`${$('#lcolor').val()}`, 'background-color':`${$('#bcolor').val()}`, 'text-decoration':`${$('#ldecoracion').val()}`, 'font-size':`${$('#size').val()}`});
-        $('#formulario').remove();
-        $('div').removeAttr('hidden');
+        ocultarFormulario();
     })
-    $('#Cancelar').on('click', function(){$('#formulario').remove();$('div').removeAttr('hidden');})
+    $('#Cancelar').on('click', ocultarFormulario)
 }
 
 function crearFormulario(){
@@ -405,10 +405,9 @@ function insertarFormulario(e){
                     <label>${$('#3cadena').val()}</label><br><input type="${$('#3tipo').val()}"><br><br></form></div>`;
         insertarElemento(e,'#contenido');
         $('#contenido').children().last().children().css({'position': 'absolute','color':`${$('#color').val()}`, 'background-color':`${$('#bcolor').val()}`, 'border':`${$('#borde').val()}px ${$('#tipo').val()} ${$('#bocolor').val()}`, 'font-size':`${$('#size').val()}`});
-        $('#formulario').remove();
-        $('div').removeAttr('hidden');
+        ocultarFormulario();
     })
-    $('#Cancelar').on('click', function(){$('#formulario').remove();$('div').removeAttr('hidden');})
+    $('#Cancelar').on('click', ocultarFormulario)
 }
 
 function crearFormularioInput(){
@@ -464,10 +463,9 @@ function insertarInput(e){
         var e=`<div><form><label>${$('#1cadena').val()}</label><br><input type="${$('#1tipo').val()}"><br><br></form></div>`;
         insertarElemento(e,'#contenido');
         $('#contenido').children().last().children().css({'position': 'absolute','color':`${$('#color').val()}`, 'background-color':`${$('#bcolor').val()}`, 'border':`${$('#borde').val()}px ${$('#tipo').val()} ${$('#bocolor').val()}`, 'font-size':`${$('#size').val()}`});
-        $('#formulario').remove();
-        $('div').removeAttr('hidden');
+        ocultarFormulario();
     })
-    $('#Cancelar').on('click', function(){$('#formulario').remove();$('div').removeAttr('hidden');})
+    $('#Cancelar').on('click', ocultarFormulario)
 }
 
 function crearFormularioImg(){
@@ -513,10 +511,9 @@ function insertarImagen(e){
         var e=`<div><img src="../img/${cadena}" width="${$('#ancho').val()}px" height="${$('#alto').val()}px" alt="${$('#cadena').val()}"></img></div>`;
         insertarElemento(e,'#contenido');
         $('#contenido').children().last().children().css({'position': 'absolute', 'background-color':`${$('#bcolor').val()}`, 'border':`${$('#borde').val()}px ${$('#tipo').val()} ${$('#bocolor').val()}`});
-        $('#formulario').remove();
-        $('div').removeAttr('hidden');
+        ocultarFormulario();
     })
-    $('#Cancelar').on('click', function(){$('#formulario').remove();$('div').removeAttr('hidden');})
+    $('#Cancelar').on('click', ocultarFormulario)
 }
 
 function crearFormularioImgE(){
@@ -558,10 +555,9 @@ function insertarImagenE(e){
         var e=`<div><img src="${$('#enlace').val()}" width="${$('#ancho').val()}px" height="${$('#alto').val()}px" alt="${$('#cadena').val()}"></img></div>`;
         insertarElemento(e,'#contenido');
         $('#contenido').children().last().children().css({'position': 'absolute', 'background-color':`${$('#bcolor').val()}`, 'border':`${$('#borde').val()}px ${$('#tipo').val()} ${$('#bocolor').val()}`});
-        $('#formulario').remove();
-        $('div').removeAttr('hidden');
+        ocultarFormulario();
     })
-    $('#Cancelar').on('click', function(){$('#formulario').remove();$('div').removeAttr('hidden');})
+    $('#Cancelar').on('click', ocultarFormulario)
 }
 
 function crearFormularioAudio(){
@@ -582,15 +578,14 @@ function insertarAudio(e){
     $('#Enviar').on('click', function(){
         var e=`<div><audio controls><source src="${$('#enlace').val()}" type="audio/ogg"><source src="${$('#enlace').val()}" type="audio/mpeg">Your browser does not support the audio element.</audio></div>`;
         insertarElemento(e,'#contenido');
-        $('#formulario').remove();
-        $('div').removeAttr('hidden');
+        ocultarFormulario();
     })
-    $('#Cancelar').on('click', function(){$('#formulario').remove();$('div').removeAttr('hidden');})
+    $('#Cancelar').on('click', ocultarFormulario)
 }
 
 function crearFormularioVideo(){
     return`<form id="formulario">
-        <label>Enlace del audio</label><br>
+        <label>Enlace del video</label><br>
         <input type="textarea" id="enlace" name="myFile"><br><br>
         <label>Ancho (en px)</label>
         <input class="form-control" type="number" id="ancho" max="1500" min="10"><br>
@@ -610,10 +605,9 @@ function insertarVideo(e){
     $('#Enviar').on('click', function(){
         var e=`<div><iframe width="${$(ancho).val()}" height="${$(alto).val()}" src="${$('#enlace').val()}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`;
         insertarElemento(e,'#contenido');
-        $('#formulario').remove();
-        $('div').removeAttr('hidden');
+        ocultarFormulario();
     })
-    $('#Cancelar').on('click', function(){$('#formulario').remove();$('div').removeAttr('hidden');})
+    $('#Cancelar').on('click', ocultarFormulario)
 }
 
 function crearFormularioTabla(){
@@ -704,9 +698,49 @@ function insertarTabla(e){
         $('#contenido').children().last().css({'border-collapse': 'collapse', 'width': `${$('#ancho').val()}px`, 'height':`${$('#alto').val()}px`, 'border':`${$('#tborde').val()}px ${$('#ttipo').val()} ${$('#tbocolor').val()}`, 'color' : `${$('#color').val()}`});
         $('#contenido').children().last().children().children().css({'background-color' : `${$('#bcolor').val()}`, 'border-collapse': 'collapse', 'border':`${$('#fborde').val()}px ${$('#ftipo').val()} ${$('#fbocolor').val()}`, 'text-align': 'left', 'padding': '8px'});
         $('#contenido').children().last().children().children().children().css({'border-collapse': 'collapse', 'border':`${$('#cborde').val()}px ${$('#ctipo').val()} ${$('#cbocolor').val()}`, 'text-align': 'left', 'padding': '8px'});
-        $('#formulario').remove();
-        $('div').removeAttr('hidden');
+        ocultarFormulario();
     })
-    $('#Cancelar').on('click', function(){$('#formulario').remove();$('div').removeAttr('hidden');})
+    $('#Cancelar').on('click', ocultarFormulario)
+}
 
+function formularioColor(){
+    return `<form id="formulario"><label>Color: </label><input id="color" type="color" name="favcolor" value="#ffffff"><br><br>
+    <input class="btn btn-success" id="Enviar" type="submit" value="Guardar" /><br>
+    <input class="btn btn-success" id="Cancelar" type="button" value="Cancelar" /><br></form>`;
+}
+
+function estilosColorFondo(){
+    var d = formularioColor();
+    $('body').append(d);
+    $('div').attr('hidden','true');
+    $('#formulario').css({'border':'1px solid #808080','position': 'absolute', 'background': 'lightblue', 'z-index':'999'});
+    $('#Enviar').on('click', function(){
+        $('body').css({'background-color':`${$('#color').val()}`});
+        ocultarFormulario();
+    })
+    $('#Cancelar').on('click', ocultarFormulario)
+}
+
+function estilosColorTexto(){
+    var d = formularioColor();
+    $('body').append(d);
+    $('div').attr('hidden','true');
+    $('#formulario').css({'border':'1px solid #808080','position': 'absolute', 'background': 'lightblue', 'z-index':'999'});
+    $('#Enviar').on('click', function(){
+        $('[name="texto"]').css({'color': `${$('#color').val()}`});
+        ocultarFormulario();
+    })
+    $('#Cancelar').on('click', ocultarFormulario)
+}
+
+function estilosColorTitulo(){
+    var d = formularioColor();
+    $('body').append(d);
+    $('div').attr('hidden','true');
+    $('#formulario').css({'border':'1px solid #808080','position': 'absolute', 'background': 'lightblue', 'z-index':'999'});
+    $('#Enviar').on('click', function(){
+        $('[name="titulo"]').css({'color': `${$('#color').val()}`});
+        ocultarFormulario();
+    })
+    $('#Cancelar').on('click', ocultarFormulario)
 }

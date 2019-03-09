@@ -20,19 +20,7 @@ $(function(){
     $('#table').on('click',insertarTabla);
     $('#audio').on('click',insertarAudio);
     $('#video').on('click',insertarVideo);
-    $('#ct').on('click',function(e){
-        e.preventDefault();
-        var c=prompt('Introduzca el color en ingles');
-        $('[name="titulo"]').css({'color': c});
-    });
-    $('#ctxt').on('click',function(e){
-        e.preventDefault();
-        var c=prompt('Introduzca el color en ingles');
-        $('[name="texto"]').css({'color': c});
-    });
-    $('#cf').on('click',function(e){
-        e.preventDefault();
-        var c=prompt('Introduzca el color en ingles');
-        $('body').css({'background-color': c});
-    });
+    $('#ct').on('click',estilosColorTitulo);
+    $('#ctxt').on('click',estilosColorTexto);
+    $('#cf').on('click',estilosColorFondo);
 });
