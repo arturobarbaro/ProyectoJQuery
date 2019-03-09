@@ -11,8 +11,14 @@ $(function(){
     $('#h').on('click',insertarTitulo);
     $('#p').on('click', insertarTexto);
     $('#img').on('click',insertarImagen);
+    $('#imgE').on('click',insertarImagenE);
     $('#a').on('click',insertarRuta);
+    $('#ab').on('click',insertarBotonEnlace);
+    $('#formu').on('click',insertarFormulario);
+    $('#formu1').on('click',insertarInput);
+    $('#button').on('click',insertarBoton);
     $('#table').on('click',insertarTabla);
+    $('#audio').on('click',insertarAudio);
     $('#ct').on('click',function(e){
         e.preventDefault();
         var c=prompt('Introduzca el color en ingles');
