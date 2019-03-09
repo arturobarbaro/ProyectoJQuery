@@ -19,6 +19,7 @@ $(function(){
     $('#button').on('click',insertarBoton);
     $('#table').on('click',insertarTabla);
     $('#audio').on('click',insertarAudio);
+    $('#video').on('click',insertarVideo);
     $('#ct').on('click',function(e){
         e.preventDefault();
         var c=prompt('Introduzca el color en ingles');

@@ -587,6 +587,34 @@ function insertarAudio(e){
     $('#Cancelar').on('click', function(){$('#formulario').remove();$('div').removeAttr('hidden');})
 }
 
+function crearFormularioVideo(){
+    return`<form id="formulario">
+        <label>Enlace del audio</label><br>
+        <input type="textarea" id="enlace" name="myFile"><br><br>
+        <label>Ancho (en px)</label>
+        <input class="form-control" type="number" id="ancho" max="1500" min="10"><br>
+        <label>Altura (en px)</label>
+        <input class="form-control" type="number" max="1500" min="10" id="alto"><br>
+        <input class="btn btn-success" id="Enviar" type="submit" value="Enviar" /><br>
+        <input class="btn btn-success" id="Cancelar" type="button" value="Cancelar" /><br>
+      </form>`;
+}
+
+function insertarVideo(e){
+    e.preventDefault();
+    var d= crearFormularioVideo();
+    $('body').append(d);
+    $('div').attr('hidden','true');
+    $('#formulario').css({'border':'1px solid #808080','position': 'absolute', 'background': 'lightblue', 'z-index':'999'});
+    $('#Enviar').on('click', function(){
+        var e=`<div><iframe width="${$(ancho).val()}" height="${$(alto).val()}" src="${$('#enlace').val()}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`;
+        insertarElemento(e,'#contenido');
+        $('#formulario').remove();
+        $('div').removeAttr('hidden');
+    })
+    $('#Cancelar').on('click', function(){$('#formulario').remove();$('div').removeAttr('hidden');})
+}
+
 function insertarTabla(e){
     var filas;
     do {
