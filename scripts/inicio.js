@@ -1,3 +1,8 @@
+/**
+ * Inserta en el body la pagina html principal.
+ * Es insertada al tener interacción con ella
+ * @return {[type]} [description]
+ */
 function crearPagina(){
     $('body').append(`<div class="container">
       <!-- HEADER -->
@@ -69,14 +74,17 @@ function crearPagina(){
       </div>`);
 }
 
+/**
+ * Carga la pagina inicial y desactiva el evento que llevaba asociado
+ */
 function inicio(){
     $(document).off('mousemove');
     crearPagina();
-    //window.confirm("¿Desea conocer mas sobre este proyecto?")?crearPagina():alert("De acuerdo. ¡Vuelva pronto!");
 }
 
+/**
+ * Comprobamos que el documento esta cargado para asignar los eventos
+ */
 $(document).ready(function(){
-    $(document).on('mousemove', function(){
-        inicio();
-    });
+    $(document).on('mousemove', inicio);
 });
