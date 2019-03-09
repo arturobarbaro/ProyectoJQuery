@@ -7,6 +7,9 @@ function insertarElemento(elemento, padre){
     mostarVistaPrevia();
     $('#contenido div').draggable();
     $(elemento).draggable();
+    $("#contenido *").mousedown(function(e){
+       	e.preventDefault();
+        if(e.which == 2){$(this).remove();}});
 }
 
 function crearFormularioTitulo(){
