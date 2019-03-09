@@ -1,12 +1,13 @@
 function mostarVistaPrevia(){
-    if($('#contenido').children()){$('#ocultar').show(1);}
+    ($('#contenido').children().length > 0)?$('#ocultar').show(1):$('#ocultar').hide(1);
 }
 
 function insertarElemento(elemento, padre){
     $(padre).append(elemento);
-    mostarVistaPrevia();
     $('#contenido div').draggable();
     $(elemento).draggable();
+    $("#contenido *").mousedown(function(e){e.preventDefault();if(e.which == 2){$(this).remove();mostarVistaPrevia();}});
+    mostarVistaPrevia();
 }
 
 function crearFormularioTitulo(){
