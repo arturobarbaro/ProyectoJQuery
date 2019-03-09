@@ -6,7 +6,7 @@ function insertarElemento(elemento, padre){
     $(padre).append(elemento);
     $('#contenido div').draggable();
     $(elemento).draggable();
-    $("#contenido *").mousedown(function(e){e.preventDefault();if(e.which == 2){$(this).remove();mostarVistaPrevia();}});
+    $("#contenido *").mousedown(function(e){e.preventDefault();if(e.which == 2){$(this).eliminar()}});
     mostarVistaPrevia();
 }
 
