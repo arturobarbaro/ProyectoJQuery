@@ -615,23 +615,72 @@ function insertarVideo(e){
     $('#Cancelar').on('click', function(){$('#formulario').remove();$('div').removeAttr('hidden');})
 }
 
-function insertarTabla(e){
-    var filas;
-    do {
-        filas = parseInt(prompt('Numero de filas de la tabla (comprendido entre 1 y 9)'));
-    } while (isNaN(filas) | filas <= 0 | filas > 10);
+function crearFormularioTabla(){
+    return`<form id="formulario">
+        <label>Color de fuente </label>
+        <input id="color" type="color" name="favcolor" value="#000000"><br>
+        <label>Color de fondo: </label>
+        <input id="bcolor" type="color" name="favcolor" value="#ffffff"><br>
+        <label>Filas: </label>
+        <input class="form-control" type="number" id="filas" max="10" min="1"><br>
+        <label>Columnas: </label>
+        <input class="form-control" type="number" id="columnas" max="10" min="1"><br>
+        <label>Altura (en px) </label>
+        <input class="form-control" type="number" id="alto" max="400" min="50"><br>
+        <label>Ancho (en px) </label>
+        <input class="form-control" type="number" id="ancho" max="400" min="50"><br>
+        <h3>Borde de la tabla</h3>
+        <label>Borde (en px)</label>
+        <input class="form-control" type="number" max="10" min="0" id="tborde"><br>
+        <label>Tipo de borde</label>
+        <select id="ttipo">
+            <option value="none">none</option>
+            <option value="dotted">dotted</option>
+            <option value="dashed">dashed</option>
+            <option value="solid">solid</option>
+            <option value="double">double</option>
+        </select><br>
+        <label>Color del borde: </label>
+        <input id="tbocolor" type="color" name="favcolor" value="#000000"><br>
+        <h3>Borde de las filas</h3>
+        <label>Borde (en px)</label>
+        <input class="form-control" type="number" max="10" min="0" id="fborde"><br>
+        <label>Tipo de borde</label>
+        <select id="ftipo">
+            <option value="none">none</option>
+            <option value="dotted">dotted</option>
+            <option value="dashed">dashed</option>
+            <option value="solid">solid</option>
+            <option value="double">double</option>
+        </select><br>
+        <label>Color del borde: </label>
+        <input id="fbocolor" type="color" name="favcolor" value="#000000"><br>
+        <h3>Borde de las columnas</h3>
+        <label>Borde (en px)</label>
+        <input class="form-control" type="number" max="10" min="0" id="cborde"><br>
+        <label>Tipo de borde</label>
+        <select id="ctipo">
+            <option value="none">none</option>
+            <option value="dotted">dotted</option>
+            <option value="dashed">dashed</option>
+            <option value="solid">solid</option>
+            <option value="double">double</option>
+        </select><br>
+        <label>Color del borde: </label>
+        <input id="cbocolor" type="color" name="favcolor" value="#000000"><br><br>
+        <input class="btn btn-success" id="Enviar" type="submit" value="Enviar" /><br>
+        <input class="btn btn-success" id="Cancelar" type="button" value="Cancelar" /><br>
+      </form>`;
+}
 
-    var columnas;
-    do {
-        columnas = parseInt(prompt('Numero de columnas de la tabla (comprendido entre 1 y 9)'));
-    } while (isNaN(columnas) | columnas <= 0 | columnas > 10);
+function crearTabla(filas, columnas){
     var tabla = document.createElement('table');
     var d = document.createElement('div');
     for (var i = 1; i <= filas; i++) {
         var tr = document.createElement('tr');
         for (var j = 1; j <= columnas; j++) {
             var td=document.createElement('td');
-            td.addEventListener('click',function(){
+            td.addEventListener('dblclick',function(){
                 $(this).text(prompt('Valor a introducir'))
             })
             td.innerText=`Fila ${i}, columna ${j}`;
@@ -641,8 +690,22 @@ function insertarTabla(e){
     }
     $(d).append(tabla);
     insertarElemento(tabla,$('#contenido'))
-    $('table').css({'border-collapse': 'collapse', 'width': '80%'});
-    $('td').css({'text-align': 'left', 'padding': '8px'});
-    $('tr').css({'text-align': 'left', 'padding': '8px'});
-    $('tr:nth-child(even)').css({'background-color': '#f2f2f2'});
+}
+
+function insertarTabla(e){
+    e.preventDefault();
+    var d= crearFormularioTabla();
+    $('body').append(d);
+    $('div').attr('hidden','true');
+    $('#formulario').css({'border':'1px solid #808080','position': 'absolute', 'background': 'lightblue', 'z-index':'999'});
+    $('#Enviar').on('click', function(){
+        crearTabla($('#filas').val(), $('#columnas').val());
+        $('#contenido').children().last().css({'border-collapse': 'collapse', 'width': `${$('#ancho').val()}px`, 'height':`${$('#alto').val()}px`, 'border':`${$('#tborde').val()}px ${$('#ttipo').val()} ${$('#tbocolor').val()}`, 'color' : `${$('#color').val()}`});
+        $('#contenido').children().last().children().children().css({'background-color' : `${$('#bcolor').val()}`, 'border-collapse': 'collapse', 'border':`${$('#fborde').val()}px ${$('#ftipo').val()} ${$('#fbocolor').val()}`, 'text-align': 'left', 'padding': '8px'});
+        $('#contenido').children().last().children().children().children().css({'border-collapse': 'collapse', 'border':`${$('#cborde').val()}px ${$('#ctipo').val()} ${$('#cbocolor').val()}`, 'text-align': 'left', 'padding': '8px'});
+        $('#formulario').remove();
+        $('div').removeAttr('hidden');
+    })
+    $('#Cancelar').on('click', function(){$('#formulario').remove();$('div').removeAttr('hidden');})
+
 }
