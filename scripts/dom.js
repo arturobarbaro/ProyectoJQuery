@@ -170,6 +170,207 @@ function insertarTexto(e){
  * Devuelve un formulario para que el usuario inserte datos
  * @return String el formulario
  */
+function crearFormularioCaja(){
+    return`<form id="formulario">
+        <label>Cadena:</label><br>
+        <textarea id="cadena" rows="7" cols="50" name="description" value=""></textarea><br><br>
+        <label>Tamaño de la fuente (em)</label>
+        <select id="size">
+            <option value="xx-small">xx-small</option>
+            <option value="x-small">x-small</option>
+            <option value="small">small</option>
+            <option value="medium">medium</option>
+            <option value="large">large</option>
+            <option value="x-large">x-large</option>
+            <option value="xx-large">xx-large</option>
+        </select><br><br>
+        <label>Tipo de fuente</label>
+        <select id="tipo">
+            <option value="b">Bold</option>
+            <option value="strong">Importante</option>
+            <option value="i">Italic</option>
+            <option value="em">Emphasized</option>
+            <option value="mark">Marked</option>
+            <option value="small">Small</option>
+            <option value="del">Deleted</option>
+            <option value="ins">Inserted</option>
+            <option value="sub">Subscript</option>
+            <option value="sup">Superscript</option>
+        </select><br><br>
+        <label>Alineación del texto</label>
+        <select id="alig">
+            <option value="left">Izquierda</option>
+            <option value="center">Centro</option>
+            <option value="right">Derecha</option>
+            <option value="justify">Justificado</option>
+        </select><br><br>
+        <label>Decoración del texto</label>
+        <select id="decoracion">
+            <option value="none">Normal</option>
+            <option value="overline">Overline</option>
+            <option value="line-through">Line-through</option>
+            <option value="underline">Underline</option>
+        </select><br><br>
+        <label>Color del texto</label>
+        <input id="color" type="color" name="favcolor" value="#000000"><br><br>
+        <label>Background-color: </label>
+        <input id="bcolor" type="color" name="favcolor" value="#ffffff"><br><br>
+        <label>Borde (en px)</label>
+        <input class="form-control" type="number" max="10" min="0" id="borde"><br><br>
+        <label>Tipo de borde</label>
+        <select id="btipo">
+            <option value="none">none</option>
+            <option value="dotted">dotted</option>
+            <option value="dashed">dashed</option>
+            <option value="solid">solid</option>
+            <option value="double">double</option>
+        </select><br>
+        <label>Color del borde: </label>
+        <input id="bocolor" type="color" name="favcolor" value="#000000"><br><br>
+        <input class="btn btn-success" id="Enviar" type="submit" value="Enviar" /><br>
+        <input class="btn btn-danger" id="Cancelar" type="button" value="Cancelar" /><br><br>
+      </form>`;
+}
+
+/**
+ * Recoge los datos del formulario e inserta el elemento DOM asignado
+ */
+function insertarCaja(e){
+    e.preventDefault();
+    var d= crearFormularioCaja();
+    $('body').append(d);
+    $('div').attr('hidden','true');
+    $('#formulario').css({'border':'1px solid #808080','position': 'absolute', 'background': 'lightblue', 'z-index':'999'});
+    $('#Enviar').on('click', function(){
+        var e=`<div><p name="texto"><${$('#tipo').val()}>${$('#cadena').val()}</${$('#tipo').val()}></p></div>`;
+        insertarElemento(e,'#contenido');
+        $('#contenido').children().last().css({'position': 'absolute', 'background-color':`${$('#bcolor').val()}`, 'border':`${$('#borde').val()}px ${$('#btipo').val()} ${$('#bocolor').val()}`, 'color':`${$('#color').val()}`, 'text-align':`${$('#alig').val()}`, 'text-decoration':`${$('#decoracion').val()}`, 'font-size':`${$('#size').val()}`});
+        ocultarFormulario();
+    })
+    $('#Cancelar').on('click', ocultarFormulario)
+}
+
+/**
+ * Devuelve un formulario para que el usuario inserte datos
+ * @return String el formulario
+ */
+function crearFormularioLista(){
+    return`<form id="formulario">
+        <label>Tipo de lista</label>
+        <select id="tlista">
+            <option value="ol">Numerada</option>
+            <option value="ul">No numerada</option>
+        </select><br><br>
+        <label>Tamaño de la fuente (em)</label>
+        <select id="size">
+            <option value="xx-small">xx-small</option>
+            <option value="x-small">x-small</option>
+            <option value="small">small</option>
+            <option value="medium">medium</option>
+            <option value="large">large</option>
+            <option value="x-large">x-large</option>
+            <option value="xx-large">xx-large</option>
+        </select><br><br>
+        <label>Alineación del texto</label>
+        <select id="alig">
+            <option value="left">Izquierda</option>
+            <option value="center">Centro</option>
+            <option value="right">Derecha</option>
+            <option value="justify">Justificado</option>
+        </select><br><br>
+        <label>Decoración del texto</label>
+        <select id="decoracion">
+            <option value="none">Normal</option>
+            <option value="overline">Overline</option>
+            <option value="line-through">Line-through</option>
+            <option value="underline">Underline</option>
+        </select><br><br>
+        <label>Color del texto</label>
+        <input id="color" type="color" name="favcolor" value="#000000"><br><br>
+        <label>Background-color: </label>
+        <input id="bcolor" type="color" name="favcolor" value="#ffffff"><br><br>
+        <label>Borde (en px)</label>
+        <input class="form-control" type="number" max="10" min="0" id="borde"><br><br>
+        <label>Tipo de borde</label>
+        <select id="tipo">
+            <option value="none">none</option>
+            <option value="dotted">dotted</option>
+            <option value="dashed">dashed</option>
+            <option value="solid">solid</option>
+            <option value="double">double</option>
+        </select><br>
+        <label>Color del borde: </label>
+        <input id="bocolor" type="color" name="favcolor" value="#000000"><br><br>
+        <h3>Elemento 1</h3>
+        <label>Cadena:</label><br>
+        <textarea id="cadena1" rows="7" cols="50" name="description" value=""></textarea><br><br>
+        <label>Tipo de fuente</label>
+        <select id="tipo1">
+        <option value="b">Bold</option>
+        <option value="strong">Importante</option>
+        <option value="i">Italic</option>
+        <option value="em">Emphasized</option>
+        <option value="mark">Marked</option>
+        <option value="small">Small</option>
+        <option value="ins">Inserted</option>
+        </select><br><br>
+        <h3>Elemento 2</h3>
+        <label>Cadena:</label><br>
+        <textarea id="cadena2" rows="7" cols="50" name="description" value=""></textarea><br><br>
+        <label>Tipo de fuente</label>
+        <select id="tipo2">
+        <option value="b">Bold</option>
+        <option value="strong">Importante</option>
+        <option value="i">Italic</option>
+        <option value="em">Emphasized</option>
+        <option value="mark">Marked</option>
+        <option value="small">Small</option>
+        <option value="ins">Inserted</option>
+        </select><br><br>
+        <h3>Elemento 3</h3>
+        <label>Cadena:</label><br>
+        <textarea id="cadena3" rows="7" cols="50" name="description" value=""></textarea><br><br>
+        <label>Tipo de fuente</label>
+        <select id="tipo3">
+        <option value="b">Bold</option>
+        <option value="strong">Importante</option>
+        <option value="i">Italic</option>
+        <option value="em">Emphasized</option>
+        <option value="mark">Marked</option>
+        <option value="small">Small</option>
+        <option value="ins">Inserted</option>
+        </select><br><br>
+        <input class="btn btn-success" id="Enviar" type="submit" value="Enviar" /><br>
+        <input class="btn btn-danger" id="Cancelar" type="button" value="Cancelar" /><br><br>
+      </form>`;
+}
+
+/**
+ * Recoge los datos del formulario e inserta el elemento DOM asignado
+ */
+function insertarLista(e){
+    e.preventDefault();
+    var d= crearFormularioLista();
+    $('body').append(d);
+    $('div').attr('hidden','true');
+    $('#formulario').css({'border':'1px solid #808080','position': 'absolute', 'background': 'lightblue', 'z-index':'999'});
+    $('#Enviar').on('click', function(){
+        var e=`<div><${$('#tlista').val()} name="texto">
+        <${$('#tipo1').val()}><li>${$('#cadena1').val()}</li></${$('#tipo1').val()}>
+        <${$('#tipo2').val()}><li>${$('#cadena2').val()}</li></${$('#tipo2').val()}>
+        <${$('#tipo3').val()}><li>${$('#cadena3').val()}</li></${$('#tipo3').val()}>
+        </${$('#tlista').val()}></div>`;
+        insertarElemento(e,'#contenido');
+        $('#contenido').children().last().css({'position': 'absolute', 'background-color':`${$('#bcolor').val()}`, 'border':`${$('#borde').val()}px ${$('#tipo').val()} ${$('#bocolor').val()}`, 'color':`${$('#color').val()}`, 'text-align':`${$('#alig').val()}`, 'text-decoration':`${$('#decoracion').val()}`, 'font-size':`${$('#size').val()}`});
+        ocultarFormulario();
+    })
+    $('#Cancelar').on('click', ocultarFormulario)
+}
+
+/**
+ * Devuelve un formulario para que el usuario inserte datos
+ * @return String el formulario
+ */
 function crearFormularioEnlace(){
     return`<form id="formulario">
         <label>Enlace web</label>

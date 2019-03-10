@@ -11,6 +11,8 @@ $(function(){
     $('#new').click(function(){location.reload()});
     $('#h').on('click',insertarTitulo);
     $('#p').on('click', insertarTexto);
+    $('#lista').on('click', insertarLista);
+    $('#caja').on('click', insertarCaja);
     $('#img').on('click',insertarImagen);
     $('#imgE').on('click',insertarImagenE);
     $('#a').on('click',insertarRuta);
