@@ -11,6 +11,7 @@ function crearPagina(){
           <div class="header-right">
               <a class="active" href="./index.html">Home</a>
               <a href="./about.html">Sobre nosotros</a>
+              <a href="./guide.html">Guia</a>
           </div>
       </div>
       <!-- MENU -->
