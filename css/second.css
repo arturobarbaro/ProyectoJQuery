@@ -43,7 +43,7 @@
 @media screen and (max-width: 500px) {
   .header a {
     float: none;
-    display: block;
+    display: flex;
     text-align: left;
   }
   .header-right {
